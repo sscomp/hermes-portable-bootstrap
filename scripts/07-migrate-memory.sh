@@ -16,7 +16,7 @@ load_bootstrap_env "${1:-}"
 : "${MEMORY_REVIEW_DECISIONS_FILE:?missing MEMORY_REVIEW_DECISIONS_FILE}"
 : "${LANCEDB_DB_PATH:?missing LANCEDB_DB_PATH}"
 : "${LANCEDB_NODE_BIN:?missing LANCEDB_NODE_BIN}"
-: "${LANCEDB_PRO_HERMES_DIR:?missing LANCEDB_PRO_HERMES_DIR}"
+: "${LANCEDB_PRO_HERMES_PLUGIN_DIR:?missing LANCEDB_PRO_HERMES_PLUGIN_DIR}"
 
 case "$MEMORY_MIGRATION_MODE" in
   plan|apply|apply-reviewed)
@@ -55,7 +55,7 @@ REVIEW_TEMPLATE_PATH="$MEMORY_REVIEW_DIR/review-decisions-template-${PROFILE_NAM
 LATEST_REVIEW_CANDIDATES_PATH="$MEMORY_REVIEW_DIR/review-candidates-latest.json"
 LATEST_REVIEW_TEMPLATE_PATH="$MEMORY_REVIEW_DIR/review-decisions-template-latest.json"
 
-python3 - "$SOURCE_FILE" "$REPORT_PATH" "$PROFILE_NAME" "$MEMORY_SOURCE_SCOPE" "$MEMORY_TARGET_SCOPE" "$MEMORY_MIGRATION_MODE" "$LANCEDB_DB_PATH" "$LANCEDB_NODE_BIN" "$LANCEDB_PRO_HERMES_DIR" "$MEMORY_ALLOW_N2_REMAP" "$REVIEW_CANDIDATES_PATH" "$REVIEW_TEMPLATE_PATH" "$MEMORY_REVIEW_DECISIONS_FILE" <<'PY'
+python3 - "$SOURCE_FILE" "$REPORT_PATH" "$PROFILE_NAME" "$MEMORY_SOURCE_SCOPE" "$MEMORY_TARGET_SCOPE" "$MEMORY_MIGRATION_MODE" "$LANCEDB_DB_PATH" "$LANCEDB_NODE_BIN" "$LANCEDB_PRO_HERMES_PLUGIN_DIR" "$MEMORY_ALLOW_N2_REMAP" "$REVIEW_CANDIDATES_PATH" "$REVIEW_TEMPLATE_PATH" "$MEMORY_REVIEW_DECISIONS_FILE" <<'PY'
 import json
 import os
 import shutil
@@ -72,7 +72,7 @@ target_scope = sys.argv[5]
 mode = sys.argv[6]
 lancedb_db_path = Path(sys.argv[7]).expanduser()
 node_bin = sys.argv[8]
-lancedb_pro_repo = Path(sys.argv[9]).expanduser()
+lancedb_plugin_repo = Path(sys.argv[9]).expanduser()
 allow_n2_remap = sys.argv[10] == "1"
 review_candidates_path = Path(sys.argv[11])
 review_template_path = Path(sys.argv[12])
@@ -85,8 +85,8 @@ keep_categories = {"decision", "preference", "profile", "architecture", "debug",
 review_categories = {"entity", "other"}
 duplicate_time_window_ms = 7 * 24 * 60 * 60 * 1000
 
-bridge_path = lancedb_pro_repo / "plugins" / "lancedb_pro_hermes" / "lancedb_bridge.mjs"
-module_path = lancedb_pro_repo / "node_modules" / "@lancedb" / "lancedb" / "dist" / "index.js"
+bridge_path = lancedb_plugin_repo / "plugins" / "hermes_lancedb" / "lancedb_bridge.mjs"
+module_path = lancedb_plugin_repo / "node_modules" / "@lancedb" / "lancedb" / "dist" / "index.js"
 
 if mode in {"apply", "apply-reviewed"} and source_scope == "agent:n2" and target_scope != "agent:n2" and not allow_n2_remap:
     raise SystemExit("Refusing to import agent:n2 memory into a different target scope without MEMORY_ALLOW_N2_REMAP=1")
@@ -95,7 +95,7 @@ if mode in {"apply", "apply-reviewed"} and not bridge_path.exists():
     raise SystemExit(f"Bridge file not found: {bridge_path}")
 
 if mode in {"apply", "apply-reviewed"} and not module_path.exists():
-    raise SystemExit(f"LanceDB module not found: {module_path}. Run npm install in lancedb-pro-hermes first.")
+    raise SystemExit(f"LanceDB module not found: {module_path}. Run npm install in lancedb-pro-hermes-plugin first.")
 
 if mode == "apply-reviewed" and not review_decisions_path.exists():
     raise SystemExit(f"Review decisions file not found: {review_decisions_path}")
@@ -141,10 +141,10 @@ def normalize_timestamp(value):
 
 def bridge_env():
     env = os.environ.copy()
-    env["LANCEDB_PRO_HERMES_DB_PATH"] = str(lancedb_db_path)
-    env["LANCEDB_PRO_HERMES_TABLE_NAME"] = "memories"
-    env["LANCEDB_PRO_HERMES_NODE_BIN"] = node_bin
-    env["LANCEDB_PRO_HERMES_LANCEDB_MODULE"] = str(module_path)
+    env["HERMES_LANCEDB_DB_PATH"] = str(lancedb_db_path)
+    env["HERMES_LANCEDB_TABLE_NAME"] = "memories"
+    env["HERMES_LANCEDB_NODE_BIN"] = node_bin
+    env["HERMES_LANCEDB_LANCEDB_MODULE"] = str(module_path)
     return env
 
 def bridge_call(command, args):

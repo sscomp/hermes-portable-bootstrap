@@ -27,13 +27,13 @@ require_grep() {
 
 require_path "$PROFILE_HOME/bin/nb"
 require_path "$PROFILE_HOME/skills/research/notebooklm"
-require_path "$PROFILE_HOME/plugins/lancedb_pro_hermes"
+require_path "$PROFILE_HOME/plugins/hermes_lancedb"
 require_path "$PROFILE_HOME/plugins/codex-dispatch"
 require_path "$PROFILE_HOME/codex-dispatch/config.json"
 require_path "$PROFILE_HOME/codex-dispatch/codex-projects.json"
 require_path "$PROFILE_HOME/config.yaml"
 
-require_grep "provider: lancedb_pro_hermes" "$PROFILE_HOME/config.yaml"
+require_grep "provider: hermes_lancedb" "$PROFILE_HOME/config.yaml"
 require_grep "codex-dispatch" "$PROFILE_HOME/config.yaml"
 require_grep "nb-list:" "$PROFILE_HOME/config.yaml"
 

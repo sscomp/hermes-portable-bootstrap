@@ -8,7 +8,7 @@
 
 - `notebooklm-hermes-skill`
 - `notebooklm-py`
-- `lancedb-pro-hermes`
+- `lancedb-pro-hermes-plugin`
 - `codex-dispatch-hermes-plugin`
 
 ## 這份 SOP 的定位
@@ -34,7 +34,7 @@
 
 但這份 SOP 的**目標方案**是：
 
-- `lancedb-pro-hermes`
+- `lancedb-pro-hermes-plugin`
 
 所以新機建出來的 profile 會是「能力相近、結構可攜」，不是硬複製目前 `m2` 的每一項內部狀態。
 
@@ -42,7 +42,7 @@
 
 - `notebooklm-hermes-skill`
 - `notebooklm-py`
-- `lancedb-pro-hermes`
+- `lancedb-pro-hermes-plugin`
 - `codex-dispatch-hermes-plugin`
 
 而 `openclaw_lancedb` 只做來源註記，不列入新機標準安裝件。
@@ -121,14 +121,14 @@ bash scripts/07-migrate-memory.sh bootstrap.env
 
 - `<PROFILE_HOME>/bin/nb`
 - `<PROFILE_HOME>/skills/research/notebooklm`
-- `<PROFILE_HOME>/plugins/lancedb_pro_hermes`
+- `<PROFILE_HOME>/plugins/hermes_lancedb`
 - `<PROFILE_HOME>/plugins/codex-dispatch`
 - `<PROFILE_HOME>/codex-dispatch/config.json`
 - `<PROFILE_HOME>/codex-dispatch/codex-projects.json`
 
 而且 `<PROFILE_HOME>/config.yaml` 內至少要有：
 
-- `memory.provider: lancedb_pro_hermes`
+- `memory.provider: hermes_lancedb`
 - `plugins.enabled` 內包含 `codex-dispatch`
 - NotebookLM quick commands
 

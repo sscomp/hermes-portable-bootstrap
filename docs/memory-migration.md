@@ -36,7 +36,7 @@ Current source-side reality:
 
 Target-side design:
 
-- the fresh Hermes profile should use `hermes_lancedb` or `lancedb_pro_hermes`
+- the fresh Hermes profile should use `hermes_lancedb`
   as the formal memory provider
 - migrated data should end up in the target LanceDB table with explicit scope
   mapping

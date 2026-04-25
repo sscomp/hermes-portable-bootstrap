@@ -32,7 +32,7 @@ The agent must obtain these values from `bootstrap.env`:
 - `REPOS_DIR`
 - `NOTEBOOKLM_HERMES_SKILL_REPO`
 - `NOTEBOOKLM_PY_REPO`
-- `LANCEDB_PRO_HERMES_REPO`
+- `LANCEDB_PRO_HERMES_PLUGIN_REPO`
 - `CODEX_DISPATCH_HERMES_PLUGIN_REPO`
 - `LANCEDB_DB_PATH`
 - `LANCEDB_SCOPE_NAME`
@@ -123,11 +123,11 @@ At the end, the target profile should have:
 
 - `<PROFILE_HOME>/bin/nb`
 - `<PROFILE_HOME>/skills/research/notebooklm`
-- `<PROFILE_HOME>/plugins/lancedb_pro_hermes`
+- `<PROFILE_HOME>/plugins/hermes_lancedb`
 - `<PROFILE_HOME>/plugins/codex-dispatch`
 - `<PROFILE_HOME>/codex-dispatch/config.json`
 - `<PROFILE_HOME>/codex-dispatch/codex-projects.json`
-- `memory.provider: lancedb_pro_hermes` in `<PROFILE_HOME>/config.yaml`
+- `memory.provider: hermes_lancedb` in `<PROFILE_HOME>/config.yaml`
 - `plugins.enabled` includes `codex-dispatch`
 - NotebookLM quick commands in `<PROFILE_HOME>/config.yaml`
 

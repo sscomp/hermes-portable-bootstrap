@@ -13,7 +13,7 @@ Rebuild a Hermes profile with the following components on a new machine:
 
 - `notebooklm-hermes-skill`
 - `notebooklm-py`
-- `lancedb-pro-hermes`
+- `lancedb-pro-hermes-plugin`
 - `codex-dispatch-hermes-plugin`
 
 This repo intentionally treats the target profile as a **portable build target**,
@@ -34,7 +34,7 @@ It reads from the local export area:
 
 This bootstrap repo targets the **new desired stack**:
 
-- `lancedb-pro-hermes`
+- `lancedb-pro-hermes-plugin`
 
 So the resulting fresh-machine profile is "m2-like" in capability, but not a
 byte-for-byte clone of the current local `m2`.
@@ -43,7 +43,7 @@ Practical meaning:
 
 - `notebooklm-hermes-skill`: GitHub dependency
 - `notebooklm-py`: GitHub dependency
-- `lancedb-pro-hermes`: GitHub dependency
+- `lancedb-pro-hermes-plugin`: GitHub dependency
 - `codex-dispatch-hermes-plugin`: GitHub dependency
 - `openclaw_lancedb`: local migration-only component, documented for reference only
 
