@@ -65,6 +65,7 @@ a local migration adapter backed by:
 For any historical-memory carry-over task, also read:
 
 - [openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
+- [hermes-to-hermes-memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/hermes-to-hermes-memory-migration.md)
 - [memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
 ## Execution order

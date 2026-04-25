@@ -22,6 +22,9 @@ Keep these terms separate:
   performing Hermes-side import work
 
 This document is about Hermes-side migration, not OpenClaw-side export.
+For Hermes-to-Hermes source export, also see:
+
+- [docs/hermes-to-hermes-memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/hermes-to-hermes-memory-migration.md)
 
 ## Source and target
 

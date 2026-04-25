@@ -49,7 +49,9 @@
 
 如果之後要搬舊記憶，請另外看正式 migration 文件：
 
+- [docs/new-machine-quickstart.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/new-machine-quickstart.zh-TW.md)
 - [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
+- [docs/hermes-to-hermes-memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/hermes-to-hermes-memory-migration.md)
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
 ## 你需要先準備

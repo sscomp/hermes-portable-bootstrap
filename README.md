@@ -52,11 +52,13 @@ Practical meaning:
 For AI agents:
 
 - [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
+- [docs/hermes-to-hermes-memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/hermes-to-hermes-memory-migration.md)
 - [docs/agent-runbook.md](/Users/sscomp/hermes-portable-bootstrap/docs/agent-runbook.md)
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
 For human review in Chinese:
 
+- [docs/new-machine-quickstart.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/new-machine-quickstart.zh-TW.md)
 - [docs/portable-sop.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/portable-sop.zh-TW.md)
 
 ## Quick start
@@ -120,13 +122,16 @@ Those are documented as manual or semi-manual steps in the runbook.
 ## Included files
 
 - [docs/agent-runbook.md](/Users/sscomp/hermes-portable-bootstrap/docs/agent-runbook.md): AI-agent-first execution contract
+- [docs/new-machine-quickstart.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/new-machine-quickstart.zh-TW.md): short human quickstart for a new machine
 - [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md): source-side OpenClaw export step
+- [docs/hermes-to-hermes-memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/hermes-to-hermes-memory-migration.md): Hermes-to-Hermes memory migration flow
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md): formal memory migration specification
 - [docs/portable-sop.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/portable-sop.zh-TW.md): Chinese review version
 - [templates/bootstrap.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/bootstrap.env.example): machine-local variables
 - [templates/profile.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/profile.env.example): placeholder profile env values
 - [scripts/lib.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/lib.sh): shared shell helpers
 - [scripts/00-export-openclaw-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/00-export-openclaw-memory.sh)
+- [scripts/08-export-hermes-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/08-export-hermes-memory.sh)
 - [scripts/01-prepare-repos.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/01-prepare-repos.sh)
 - [scripts/02-create-profile.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/02-create-profile.sh)
 - [scripts/03-install-notebooklm.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/03-install-notebooklm.sh)

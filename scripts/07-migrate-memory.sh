@@ -7,6 +7,7 @@ source "$ROOT_DIR/scripts/lib.sh"
 load_bootstrap_env "${1:-}"
 
 : "${MEMORY_MIGRATION_MODE:?missing MEMORY_MIGRATION_MODE}"
+: "${MEMORY_SOURCE_EXPORT:=}"
 : "${MEMORY_SOURCE_MAIN_EXPORT:?missing MEMORY_SOURCE_MAIN_EXPORT}"
 : "${MEMORY_SOURCE_N2_EXPORT:?missing MEMORY_SOURCE_N2_EXPORT}"
 : "${MEMORY_SOURCE_SCOPE:?missing MEMORY_SOURCE_SCOPE}"
@@ -36,9 +37,13 @@ case "$MEMORY_SOURCE_SCOPE" in
     SOURCE_FILE="$MEMORY_SOURCE_N2_EXPORT"
     ;;
   *)
-    echo "Unsupported MEMORY_SOURCE_SCOPE: $MEMORY_SOURCE_SCOPE" >&2
-    echo "Expected agent:main or agent:n2" >&2
-    exit 2
+    if [ -n "$MEMORY_SOURCE_EXPORT" ]; then
+      SOURCE_FILE="$MEMORY_SOURCE_EXPORT"
+    else
+      echo "Unsupported MEMORY_SOURCE_SCOPE without MEMORY_SOURCE_EXPORT: $MEMORY_SOURCE_SCOPE" >&2
+      echo "Set MEMORY_SOURCE_EXPORT for Hermes-to-Hermes or other custom source exports." >&2
+      exit 2
+    fi
     ;;
 esac
 
