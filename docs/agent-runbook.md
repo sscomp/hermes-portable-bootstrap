@@ -37,6 +37,11 @@ The agent must obtain these values from `bootstrap.env`:
 - `LANCEDB_DB_PATH`
 - `LANCEDB_SCOPE_NAME`
 - `CODEX_ALLOWED_ROOT`
+- `MEMORY_MIGRATION_MODE`
+- `MEMORY_SOURCE_MAIN_EXPORT`
+- `MEMORY_SOURCE_N2_EXPORT`
+- `MEMORY_SOURCE_SCOPE`
+- `MEMORY_TARGET_SCOPE`
 
 ## Do not assume
 
@@ -71,6 +76,12 @@ bash scripts/05-install-codex-dispatch.sh bootstrap.env
 bash scripts/06-smoke-test.sh bootstrap.env
 ```
 
+Optional memory-planning step:
+
+```bash
+bash scripts/07-migrate-memory.sh bootstrap.env
+```
+
 ## Manual checkpoints the agent must announce
 
 After script 03:
@@ -87,6 +98,11 @@ After script 04:
 After script 05:
 
 - Hermes gateway must be restarted before slash commands are tested
+
+After script 07:
+
+- if mode is `plan`, review the generated migration report before any real import work
+- do not claim memory was imported unless a future import script actually ran
 
 ## Expected result
 

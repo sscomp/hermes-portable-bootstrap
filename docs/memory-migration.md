@@ -204,3 +204,25 @@ This document does not yet define:
 Those should be added later as implementation artifacts once the target memory
 provider is finalized.
 
+## First implementation artifact
+
+The current bootstrap repo includes:
+
+- [scripts/07-migrate-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/07-migrate-memory.sh)
+
+Current role of that script:
+
+- read the source export JSON
+- generate a migration planning report
+- count records by category
+- classify records into keep / review / drop buckets
+- show proposed source-scope to target-scope mapping
+
+Current non-goals of that script:
+
+- it does not write into the target LanceDB table yet
+- it does not mutate the source export
+- it does not claim migration completion
+
+Treat it as a planning and verification skeleton, not as the final importer.
+

@@ -73,6 +73,12 @@ bash scripts/05-install-codex-dispatch.sh bootstrap.env
 bash scripts/06-smoke-test.sh bootstrap.env
 ```
 
+If historical memory should be reviewed for migration, run the optional planning step:
+
+```bash
+bash scripts/07-migrate-memory.sh bootstrap.env
+```
+
 ## Scope of automation
 
 This repo automates:
@@ -108,6 +114,7 @@ Those are documented as manual or semi-manual steps in the runbook.
 - [scripts/04-install-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/04-install-memory.sh)
 - [scripts/05-install-codex-dispatch.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/05-install-codex-dispatch.sh)
 - [scripts/06-smoke-test.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/06-smoke-test.sh)
+- [scripts/07-migrate-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/07-migrate-memory.sh)
 
 ## 中文簡述
 

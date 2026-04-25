@@ -75,6 +75,12 @@ bash scripts/05-install-codex-dispatch.sh bootstrap.env
 bash scripts/06-smoke-test.sh bootstrap.env
 ```
 
+如果你要先規劃舊記憶搬移，再執行：
+
+```bash
+bash scripts/07-migrate-memory.sh bootstrap.env
+```
+
 ## 哪些東西不會自動完成
 
 以下項目故意不自動化：
@@ -89,6 +95,8 @@ bash scripts/06-smoke-test.sh bootstrap.env
 記憶資料遷移的規格，已獨立整理在：
 
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
+
+目前 `scripts/07-migrate-memory.sh` 是第一版 skeleton，主要用途是產生 migration report，不會假裝已經把資料正式匯入新表。
 
 ## 安裝完成後你應該看到
 
