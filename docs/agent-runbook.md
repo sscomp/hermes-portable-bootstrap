@@ -64,6 +64,7 @@ a local migration adapter backed by:
 
 For any historical-memory carry-over task, also read:
 
+- [openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
 - [memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
 ## Execution order
@@ -79,7 +80,13 @@ bash scripts/05-install-codex-dispatch.sh bootstrap.env
 bash scripts/06-smoke-test.sh bootstrap.env
 ```
 
-Optional memory-planning step:
+If the old machine still needs source-side export:
+
+```bash
+bash scripts/00-export-openclaw-memory.sh
+```
+
+Optional Hermes-side memory migration step:
 
 ```bash
 bash scripts/07-migrate-memory.sh bootstrap.env
@@ -104,7 +111,7 @@ After script 05:
 
 After script 07:
 
-- if mode is `plan`, review the generated migration report before any real import work
+- if mode is `plan`, review the generated migration report before any real Hermes-side import work
 - if mode is `apply`, only claim import completion after reviewing the import report
 - if mode is `apply-reviewed`, verify the review decisions file is human-approved before import
 - tell the human where the review candidates file and review decisions template were written

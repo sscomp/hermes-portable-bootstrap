@@ -49,6 +49,7 @@
 
 如果之後要搬舊記憶，請另外看正式 migration 文件：
 
+- [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
 ## 你需要先準備
@@ -75,7 +76,13 @@ bash scripts/05-install-codex-dispatch.sh bootstrap.env
 bash scripts/06-smoke-test.sh bootstrap.env
 ```
 
-如果你要先規劃舊記憶搬移，再執行：
+如果舊 OpenClaw 機器還需要先把 JSON 匯出，先執行：
+
+```bash
+bash scripts/00-export-openclaw-memory.sh
+```
+
+如果你要再做 Hermes 端的舊記憶搬移規劃或匯入，再執行：
 
 ```bash
 bash scripts/07-migrate-memory.sh bootstrap.env
@@ -96,7 +103,13 @@ bash scripts/07-migrate-memory.sh bootstrap.env
 
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
-目前 `scripts/07-migrate-memory.sh` 已支援三種模式：
+目前這套流程的名詞建議這樣理解：
+
+- `export`：從 OpenClaw 舊機台把記憶匯出成 JSON
+- `import`：把已準備好的 JSON 寫入目標 memory store
+- `migration`：在 Hermes 端做 scope mapping、review、dedupe、驗證後再匯入
+
+目前 `scripts/07-migrate-memory.sh` 已支援三種 Hermes 端 migration 模式：
 
 - `plan`：產生 migration report、review candidates 與 decisions template
 - `apply`：保守匯入，只匯入 `keep` bucket，並跳過明顯重複資料

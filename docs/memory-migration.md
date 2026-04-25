@@ -12,6 +12,17 @@ Memory migration handles historical durable data.
 
 Do not treat these as the same operation.
 
+## Terminology
+
+Keep these terms separate:
+
+- `export`: read source-side OpenClaw memory and write JSON files
+- `import`: load a prepared JSON file into a target store
+- `migration`: apply mapping, review, dedupe, and validation rules while
+  performing Hermes-side import work
+
+This document is about Hermes-side migration, not OpenClaw-side export.
+
 ## Source and target
 
 Current source-side reality:
@@ -20,6 +31,8 @@ Current source-side reality:
 - `openclaw_lancedb` is a migration adapter
 - exported source data currently lives under:
   - `~/.hermes/migration/openclaw-lancedb-pro-export/`
+- the recommended source-side export instructions live in:
+  - [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
 
 Target-side design:
 
@@ -89,7 +102,7 @@ Use when:
 
 Result:
 
-- source records imported into the target table
+- source records imported into the target table through migration rules
 - scope mapping applied
 - duplicate handling required
 
@@ -116,7 +129,7 @@ Recommended to keep:
 - `fact`
 - `user`
 
-Recommended to review before import:
+Recommended to review before Hermes-side import:
 
 - `entity`
 - `other`
@@ -130,7 +143,7 @@ Recommended to drop unless explicitly requested:
 
 ## Deduplication policy
 
-Before importing into the target table, compare candidate rows by:
+Before importing into the target table through migration, compare candidate rows by:
 
 1. normalized text
 2. scope
@@ -189,7 +202,7 @@ An AI agent following this spec must:
 
 - separate install work from migration work
 - never invent a scope mapping
-- never import data without a named source path
+- never import data without a named source export path
 - never import `n2` memory into another profile without explicit approval
 - produce a short import report when migration is done
 
@@ -242,17 +255,22 @@ The target record should also preserve the original `timestamp` where possible.
 
 The current bootstrap repo includes:
 
+- [scripts/00-export-openclaw-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/00-export-openclaw-memory.sh)
 - [scripts/07-migrate-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/07-migrate-memory.sh)
 
 Current role of that script:
 
+- `00-export-openclaw-memory.sh`
+  - run on the old OpenClaw machine
+  - export source data into `agent-main.json` and `agent-n2.json`
+- `07-migrate-memory.sh`
 - read the source export JSON
 - generate a migration planning report
 - generate review candidates and a decisions template
 - count records by category
 - classify records into keep / review / drop buckets
 - show proposed source-scope to target-scope mapping
-- when mode is `apply`, import only `keep` bucket records into the target LanceDB table
+- when mode is `apply`, import only `keep` bucket records into the target LanceDB table under Hermes-side migration rules
 - when mode is `apply-reviewed`, import `keep` plus explicitly approved review records
 - skip obvious duplicates by normalized text + category + target scope
 - preserve original timestamp and source metadata in imported records

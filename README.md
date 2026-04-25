@@ -51,6 +51,7 @@ Practical meaning:
 
 For AI agents:
 
+- [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
 - [docs/agent-runbook.md](/Users/sscomp/hermes-portable-bootstrap/docs/agent-runbook.md)
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
@@ -73,16 +74,22 @@ bash scripts/05-install-codex-dispatch.sh bootstrap.env
 bash scripts/06-smoke-test.sh bootstrap.env
 ```
 
-If historical memory should be reviewed or applied for migration, run the optional step:
+If the source machine still needs OpenClaw-side export, run:
+
+```bash
+bash scripts/00-export-openclaw-memory.sh
+```
+
+If historical memory should be reviewed or applied on the Hermes side, run the optional step:
 
 ```bash
 bash scripts/07-migrate-memory.sh bootstrap.env
 ```
 
-`07-migrate-memory.sh` now supports a staged migration flow:
+`07-migrate-memory.sh` is a Hermes-side migration-oriented importer with a staged flow:
 
 - `plan`: generate the migration report plus review candidate files
-- `apply`: import only the `keep` bucket with duplicate checks
+- `apply`: import only the `keep` bucket with migration checks
 - `apply-reviewed`: import `keep` plus review records explicitly marked `approve`
 
 The script also preserves original `timestamp` and source-side metadata in the
@@ -113,11 +120,13 @@ Those are documented as manual or semi-manual steps in the runbook.
 ## Included files
 
 - [docs/agent-runbook.md](/Users/sscomp/hermes-portable-bootstrap/docs/agent-runbook.md): AI-agent-first execution contract
+- [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md): source-side OpenClaw export step
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md): formal memory migration specification
 - [docs/portable-sop.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/portable-sop.zh-TW.md): Chinese review version
 - [templates/bootstrap.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/bootstrap.env.example): machine-local variables
 - [templates/profile.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/profile.env.example): placeholder profile env values
 - [scripts/lib.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/lib.sh): shared shell helpers
+- [scripts/00-export-openclaw-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/00-export-openclaw-memory.sh)
 - [scripts/01-prepare-repos.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/01-prepare-repos.sh)
 - [scripts/02-create-profile.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/02-create-profile.sh)
 - [scripts/03-install-notebooklm.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/03-install-notebooklm.sh)
@@ -132,6 +141,7 @@ Those are documented as manual or semi-manual steps in the runbook.
 
 重點不是複製 `m2` 目錄，而是用一套可重跑、可校對、可交給 AI agent 的流程，把需要的能力重新安裝起來。這樣之後換機、改 profile 名稱、交給 Claude / Codex 幫忙佈署，都比較穩。
 
-另外，記憶搬移現在也已經另外整理成正式規格文件：
+另外，OpenClaw 端的 export 與 Hermes 端的 migration 現在已經拆開整理：
 
+- [docs/openclaw-memory-export.md](/Users/sscomp/hermes-portable-bootstrap/docs/openclaw-memory-export.md)
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
