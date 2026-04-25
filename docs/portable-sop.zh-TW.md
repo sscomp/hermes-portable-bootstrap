@@ -47,6 +47,10 @@
 
 而 `openclaw_lancedb` 只做來源註記，不列入新機標準安裝件。
 
+如果之後要搬舊記憶，請另外看正式 migration 文件：
+
+- [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
+
 ## 你需要先準備
 
 1. 新機已安裝 Hermes
@@ -81,6 +85,10 @@ bash scripts/06-smoke-test.sh bootstrap.env
 - 既有 LanceDB 記憶資料搬移
 
 原因很簡單：這些不是「程式安裝」而是「環境祕密與資料遷移」，交給 AI agent 自行猜測反而危險。
+
+記憶資料遷移的規格，已獨立整理在：
+
+- [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
 ## 安裝完成後你應該看到
 

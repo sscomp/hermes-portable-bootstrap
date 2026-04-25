@@ -54,6 +54,10 @@ a local migration adapter backed by:
 
 - `~/.hermes/migration/openclaw-lancedb-pro-export/`
 
+For any historical-memory carry-over task, also read:
+
+- [memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
+
 ## Execution order
 
 Run these scripts in order:
@@ -78,6 +82,7 @@ After script 04:
 
 - the real profile `.env` must be filled in
 - LanceDB data migration is still a separate decision
+- if migration is requested, follow `docs/memory-migration.md`
 
 After script 05:
 

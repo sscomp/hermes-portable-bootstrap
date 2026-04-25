@@ -52,6 +52,7 @@ Practical meaning:
 For AI agents:
 
 - [docs/agent-runbook.md](/Users/sscomp/hermes-portable-bootstrap/docs/agent-runbook.md)
+- [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
 For human review in Chinese:
 
@@ -96,6 +97,7 @@ Those are documented as manual or semi-manual steps in the runbook.
 ## Included files
 
 - [docs/agent-runbook.md](/Users/sscomp/hermes-portable-bootstrap/docs/agent-runbook.md): AI-agent-first execution contract
+- [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md): formal memory migration specification
 - [docs/portable-sop.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/portable-sop.zh-TW.md): Chinese review version
 - [templates/bootstrap.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/bootstrap.env.example): machine-local variables
 - [templates/profile.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/profile.env.example): placeholder profile env values
@@ -112,3 +114,7 @@ Those are documented as manual or semi-manual steps in the runbook.
 這個 repo 的目的，是讓一台全新的 Hermes 機器可以按照固定步驟，重建出你要的 profile 能力組合。
 
 重點不是複製 `m2` 目錄，而是用一套可重跑、可校對、可交給 AI agent 的流程，把需要的能力重新安裝起來。這樣之後換機、改 profile 名稱、交給 Claude / Codex 幫忙佈署，都比較穩。
+
+另外，記憶搬移現在也已經另外整理成正式規格文件：
+
+- [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
