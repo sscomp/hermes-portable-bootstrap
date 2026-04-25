@@ -204,6 +204,40 @@ This document does not yet define:
 Those should be added later as implementation artifacts once the target memory
 provider is finalized.
 
+## Review and approval flow
+
+The migration should be treated as a staged workflow:
+
+1. `plan`
+2. human review
+3. `apply`
+4. optional `apply-reviewed`
+
+Expected artifacts:
+
+- migration report
+- review candidates JSON
+- review decisions template JSON
+- final review decisions JSON approved by a human
+
+The agent must not treat `review` records as approved by default.
+
+## Metadata preservation
+
+When a record is imported into the target LanceDB table, the importer should
+preserve and extend source-side metadata, not discard it.
+
+Minimum preserved fields:
+
+- original source record id
+- original source scope
+- original timestamp
+- source export file
+- source export time
+- migration bucket
+
+The target record should also preserve the original `timestamp` where possible.
+
 ## First implementation artifact
 
 The current bootstrap repo includes:
@@ -214,16 +248,19 @@ Current role of that script:
 
 - read the source export JSON
 - generate a migration planning report
+- generate review candidates and a decisions template
 - count records by category
 - classify records into keep / review / drop buckets
 - show proposed source-scope to target-scope mapping
 - when mode is `apply`, import only `keep` bucket records into the target LanceDB table
+- when mode is `apply-reviewed`, import `keep` plus explicitly approved review records
 - skip obvious duplicates by normalized text + category + target scope
+- preserve original timestamp and source metadata in imported records
 
 Current non-goals of that script:
 
-- it does not import `review` bucket records automatically
+- it does not approve `review` bucket records automatically
 - it does not mutate the source export
-- it does not claim that review-required data was fully migrated
+- it does not claim that review-required data was fully migrated unless `apply-reviewed` used an approved decisions file
 
 Treat it as a conservative first importer plus planning tool, not as the final full-fidelity migration pipeline.

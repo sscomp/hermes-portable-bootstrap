@@ -96,10 +96,13 @@ bash scripts/07-migrate-memory.sh bootstrap.env
 
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
-目前 `scripts/07-migrate-memory.sh` 已支援兩種模式：
+目前 `scripts/07-migrate-memory.sh` 已支援三種模式：
 
-- `plan`：只產生 migration report
+- `plan`：產生 migration report、review candidates 與 decisions template
 - `apply`：保守匯入，只匯入 `keep` bucket，並跳過明顯重複資料
+- `apply-reviewed`：在 `apply` 基礎上，再匯入 decisions file 中明確標為 `approve` 的 review records
+
+另外，現在匯入時也會保留原始 `timestamp` 與來源 metadata，不會只剩簡化後的文字內容。
 
 ## 安裝完成後你應該看到
 

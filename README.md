@@ -79,6 +79,15 @@ If historical memory should be reviewed or applied for migration, run the option
 bash scripts/07-migrate-memory.sh bootstrap.env
 ```
 
+`07-migrate-memory.sh` now supports a staged migration flow:
+
+- `plan`: generate the migration report plus review candidate files
+- `apply`: import only the `keep` bucket with duplicate checks
+- `apply-reviewed`: import `keep` plus review records explicitly marked `approve`
+
+The script also preserves original `timestamp` and source-side metadata in the
+imported LanceDB record metadata.
+
 ## Scope of automation
 
 This repo automates:
@@ -90,6 +99,7 @@ This repo automates:
 - Codex dispatch plugin install
 - basic config patching
 - file-based smoke tests
+- staged memory migration artifacts for human review
 
 This repo does not automate secrets:
 

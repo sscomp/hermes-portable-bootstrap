@@ -42,6 +42,8 @@ The agent must obtain these values from `bootstrap.env`:
 - `MEMORY_SOURCE_N2_EXPORT`
 - `MEMORY_SOURCE_SCOPE`
 - `MEMORY_TARGET_SCOPE`
+- `MEMORY_REVIEW_DIR`
+- `MEMORY_REVIEW_DECISIONS_FILE`
 - `MEMORY_ALLOW_N2_REMAP`
 
 ## Do not assume
@@ -104,6 +106,8 @@ After script 07:
 
 - if mode is `plan`, review the generated migration report before any real import work
 - if mode is `apply`, only claim import completion after reviewing the import report
+- if mode is `apply-reviewed`, verify the review decisions file is human-approved before import
+- tell the human where the review candidates file and review decisions template were written
 - do not silently remap `agent:n2` into another scope unless `MEMORY_ALLOW_N2_REMAP=1`
 
 ## Expected result
