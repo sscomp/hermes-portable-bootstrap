@@ -15,7 +15,9 @@
 
 1. 準備 Hermes 與新的 profile 名稱
 2. `git clone` [sscomp/hermes-portable-bootstrap](https://github.com/sscomp/hermes-portable-bootstrap)
-3. 複製 `templates/bootstrap.env.example` 成 `bootstrap.env`
+3. 依情境複製範本：
+   - 一般新機安裝：`templates/bootstrap.env.example`
+   - `Hermes -> Hermes` 遷移：`templates/bootstrap.hermes-to-hermes.env.example`
 4. 修改 `bootstrap.env`
 5. 依序執行：
 

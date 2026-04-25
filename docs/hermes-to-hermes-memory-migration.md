@@ -64,6 +64,20 @@ MEMORY_SOURCE_EXPORT="/absolute/path/to/hermes-source-export.json"
 MEMORY_TARGET_SCOPE="agent:<target-profile>"
 ```
 
+If you want a ready-made starting point, copy:
+
+- [templates/bootstrap.hermes-to-hermes.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/bootstrap.hermes-to-hermes.env.example)
+
+The main fields you usually need to edit are:
+
+- `PROFILE_NAME`
+- `PROFILE_HOME`
+- `LANCEDB_DB_PATH`
+- `LANCEDB_SCOPE_NAME`
+- `MEMORY_SOURCE_EXPORT`
+- `MEMORY_SOURCE_SCOPE`
+- `MEMORY_TARGET_SCOPE`
+
 Then run planning first:
 
 ```bash

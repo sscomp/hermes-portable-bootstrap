@@ -128,6 +128,7 @@ Those are documented as manual or semi-manual steps in the runbook.
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md): formal memory migration specification
 - [docs/portable-sop.zh-TW.md](/Users/sscomp/hermes-portable-bootstrap/docs/portable-sop.zh-TW.md): Chinese review version
 - [templates/bootstrap.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/bootstrap.env.example): machine-local variables
+- [templates/bootstrap.hermes-to-hermes.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/bootstrap.hermes-to-hermes.env.example): Hermes-to-Hermes migration bootstrap example
 - [templates/profile.env.example](/Users/sscomp/hermes-portable-bootstrap/templates/profile.env.example): placeholder profile env values
 - [scripts/lib.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/lib.sh): shared shell helpers
 - [scripts/00-export-openclaw-memory.sh](/Users/sscomp/hermes-portable-bootstrap/scripts/00-export-openclaw-memory.sh)
