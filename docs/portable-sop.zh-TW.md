@@ -96,7 +96,10 @@ bash scripts/07-migrate-memory.sh bootstrap.env
 
 - [docs/memory-migration.md](/Users/sscomp/hermes-portable-bootstrap/docs/memory-migration.md)
 
-目前 `scripts/07-migrate-memory.sh` 是第一版 skeleton，主要用途是產生 migration report，不會假裝已經把資料正式匯入新表。
+目前 `scripts/07-migrate-memory.sh` 已支援兩種模式：
+
+- `plan`：只產生 migration report
+- `apply`：保守匯入，只匯入 `keep` bucket，並跳過明顯重複資料
 
 ## 安裝完成後你應該看到
 

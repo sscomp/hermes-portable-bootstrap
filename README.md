@@ -73,7 +73,7 @@ bash scripts/05-install-codex-dispatch.sh bootstrap.env
 bash scripts/06-smoke-test.sh bootstrap.env
 ```
 
-If historical memory should be reviewed for migration, run the optional planning step:
+If historical memory should be reviewed or applied for migration, run the optional step:
 
 ```bash
 bash scripts/07-migrate-memory.sh bootstrap.env

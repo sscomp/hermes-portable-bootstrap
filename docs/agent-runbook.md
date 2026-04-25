@@ -42,6 +42,7 @@ The agent must obtain these values from `bootstrap.env`:
 - `MEMORY_SOURCE_N2_EXPORT`
 - `MEMORY_SOURCE_SCOPE`
 - `MEMORY_TARGET_SCOPE`
+- `MEMORY_ALLOW_N2_REMAP`
 
 ## Do not assume
 
@@ -102,7 +103,8 @@ After script 05:
 After script 07:
 
 - if mode is `plan`, review the generated migration report before any real import work
-- do not claim memory was imported unless a future import script actually ran
+- if mode is `apply`, only claim import completion after reviewing the import report
+- do not silently remap `agent:n2` into another scope unless `MEMORY_ALLOW_N2_REMAP=1`
 
 ## Expected result
 

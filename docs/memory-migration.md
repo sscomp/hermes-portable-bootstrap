@@ -217,12 +217,13 @@ Current role of that script:
 - count records by category
 - classify records into keep / review / drop buckets
 - show proposed source-scope to target-scope mapping
+- when mode is `apply`, import only `keep` bucket records into the target LanceDB table
+- skip obvious duplicates by normalized text + category + target scope
 
 Current non-goals of that script:
 
-- it does not write into the target LanceDB table yet
+- it does not import `review` bucket records automatically
 - it does not mutate the source export
-- it does not claim migration completion
+- it does not claim that review-required data was fully migrated
 
-Treat it as a planning and verification skeleton, not as the final importer.
-
+Treat it as a conservative first importer plus planning tool, not as the final full-fidelity migration pipeline.
